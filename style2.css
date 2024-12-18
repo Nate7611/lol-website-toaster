@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'BeaufortforLOL Bold';
+    src: url(fonts/BeaufortforLOL-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Spiegel Regular';
+    src: url(fonts/Spiegel-Regular.ttf);
+}
+
+body {
+    background-color: #010A13;
+    color: rgb(240, 230, 210);
+    font-family: 'Spiegel Regular';
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'BeaufortforLOL Bold';
+    color: rgb(205, 165, 79);
+}
+
+h1 {
+    font-size: 15rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+p, a {
+    font-size: 1.5rem;
+    max-width: 60ch;
+}
+
+a {
+    color: rgb(240, 230, 210);
+}
+
+header {
+    width: fit-content;
+    max-width: 90vw;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+    padding: 45px;
+    border: 10px solid rgb(205, 165, 79);
+    border-radius: 10px;
+}
+
+header h2 {
+    padding-bottom: 30px;
+}
+
+@media only screen and (max-width: 1030px) {
+    h1 {
+        font-size: 10rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 730px) {
+    h1 {
+        font-size: 6rem;
+    }  
+
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    h1 {
+        font-size: 3.5rem;
+    }  
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    header {
+        padding: 25px;
+        border: 6px solid rgb(205, 165, 79);
+    }
+    
+}
+

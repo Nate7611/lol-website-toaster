@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="normalize.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <script defer src="https://umami.nate-76.duckdns.org/script.js"
+    data-website-id="c14207f7-4c27-4da5-a3a6-cc63d356e84b"></script>
+  <title>THE TOASTER GUY#NA1</title>
+</head>
+
+<body>
+  <div id="loading-screen">
+    <h1>Loading...</h1>
+  </div>
+
+  <header>
+    <section class="intro">
+      <h1>THE TOASTER GUY</h1>
+      <h2>A League of Legends Professor<span class="asterisk">*</span></h2>
+    </section>
+  </header>
+
+  <main>
+    <section class="champ-quote">
+      <h1>Quote</h1>
+      <p class="champ-quotation-start">"</p>
+      <p>If <span class="champName"></span> has one million players, then <b>I'M DEAD</b>.</p>
+      <p>If <span class="champName"></span> has one player, then <b>I'M DEAD</b>.</p>
+      <p>If <span class="champName"></span> has no players, that means <b>I'M DEAD</b>.</p>
+      <p class="champ-quotation-end">"</p>
+    </section>
+
+    <section id="work-ethic">
+      <h1>Work Ethics</h1>
+
+      <div class="ethic-container">
+        <div class="ethic-1">
+          <h2>Toxicity</h2>
+          <hr>
+          <p>I'm always appreciating my teammates for their contributions, as many "carries" as i get under my belt I
+            never forget the teamwork that brought me there. It doesn't matter if you set me up for a or clear a ward in
+            my lane, I will thank you for your help because I couldn't do it without you. Toxicity will die and <b>WE
+              WILL KILL IT</b>.</p>
+        </div>
+        <div class="ethic-2">
+          <h2><span class="champName"></span></h2>
+          <hr>
+          <p>If I am in your game there is a <b>99%</b> chance I will be on
+            <span class="champName"></span>. If <span class="champName"></span>
+            happens to be banned, do <b>NOT</b> fret! Given Work Ethic #1, I will <b>NOT</b> quit or take the game any
+            less seriously. I will still play to the very end no matter which champ I have to do it on.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="skill">
+      <h1>Skill</h1>
+      <p>If words don't convince you this image says it all.</p>
+      <img src="img/champ-history.jpg" alt="A picture of my profile showing a 6 game loss streak.">
+      <p>If that image hasn't impressed you enough, feel free to get a live look into my profile <a
+          href="https://www.op.gg/summoners/na/THE%20TOASTER%20GUY-NA1" target="_blank">here.</a></p>
+    </section>
+
+    <section class="clip">
+      <h1>Highlights</h1>
+      <p>Have a look at some of my best moments.</p>
+      <div class="video">
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/dfku4ndsrFI?si=aIZ1KUKVWXWXsLzp"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="feedback">
+      <h1>Feedback</h1>
+
+      <p>I would love to know how our game went and any feedback you have for my gameplay!</p>
+
+      <form name="Gameplay Feedback" action="https://api.web3forms.com/submit" method="POST">
+
+        <input type="hidden" name="access_key" value="943732d7-a4e6-4e3c-a3d8-d96779f5fdb8">
+
+        <label for="username">Your Username:</label>
+        <input type="text" id="username" name="Username" placeholder="Username" autocomplete="off" required>
+
+        <br>
+
+        <label for="win">Did we win?</label>
+        <select id="win" name="Win?" required>
+          <option value="Yes">Yes!</option>
+          <option value="No">No...</option>
+        </select>
+
+        <br>
+
+        <label for="skill">How did I do?</label>
+        <select id="skill" name="How did I do?" required>
+          <option value="Very Good">Very Good</option>
+          <option value="Good">Good</option>
+          <option value="Average">Average</option>
+          <option value="Bad">Bad</option>
+          <option value="Abysmal">Abysmal</option>
+        </select>
+
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <input type="hidden" name="redirect" value="https://nate-league.pages.dev/thanks.html">
+
+        <input type="submit" value="Submit">
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Thanks to Josh W Comeau for <a href="https://www.joshwcomeau.com/css/custom-css-reset/" target="_blank">A Modern
+        CSS Reset</a>.</p>
+  </footer>
+
+  <script>
+    const loadingScreenElement = document.getElementById('loading-screen');
+    const workEthicElement = document.getElementById('work-ethic');
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch('https://lolwebsiteapi.nate-76.duckdns.org/toaster');
+        const data = await response.json();
+
+        const newString = data.currentString;
+
+        workEthicElement.style.backgroundImage = "url('img/champs/" + data.currentString.replace("'", "\\'") + ".jpg')";
+
+        const nameElements = document.querySelectorAll('.champName');
+
+        nameElements.forEach(element => {
+          element.innerHTML = newString;
+        });
+      }
+      catch (error) {
+        console.error('Error fetching data:', error);
+
+        workEthicElement.style.backgroundImage = "url('img/champs/Ryze.jpg')";
+
+        const nameElements = document.querySelectorAll('.champName');
+
+        nameElements.forEach(element => {
+          element.innerHTML = 'Ryze';
+        });
+      }
+    });
+
+    window.onload = async () => {
+      loadingScreenElement.classList.add('hidden');
+    };
+
+    loadingScreenElement.addEventListener('transitionend', () => {
+      loadingScreenElement.remove();
+    });
+  </script>
+</body>
+
+</html>
