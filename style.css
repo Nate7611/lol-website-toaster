@@ -92,6 +92,9 @@ header {
 .intro h1 {
     font-size: 7rem;
     padding-block: 20px;
+    max-width: 90vw;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .asterisk {
@@ -321,6 +324,10 @@ footer a {
 }
 
 @media only screen and (max-width: 550px) {
+    .intro h1 {
+        font-size: 3.5rem !important;
+    }
+
     h1 {
         font-size: 3rem;
     }
