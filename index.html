@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="normalize.css" rel="stylesheet" />
-  <link href="style.css" rel="stylesheet" />
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link href="css/normalize.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <script defer src="https://umami.nate-76.duckdns.org/script.js"
     data-website-id="c14207f7-4c27-4da5-a3a6-cc63d356e84b"></script>
   <title>THE TOASTER GUY#NA1</title>
@@ -35,6 +35,7 @@
     </section>
 
     <section id="work-ethic">
+      <img id="color-thief-pic" src="assets/img/champs/Ryze.jpg" style="display: none;">
       <h1>Work Ethics</h1>
 
       <div class="ethic-container">
@@ -64,7 +65,7 @@
     <section class="skill">
       <h1>Skill</h1>
       <p>If words don't convince you this image says it all.</p>
-      <img src="img/champ-history.jpg" alt="A picture of my profile showing a 6 game loss streak.">
+      <img src="assets/img/champ-history.jpg" alt="A picture of my profile showing a 6 game loss streak.">
       <p>If that image hasn't impressed you enough, feel free to get a live look into my profile <a
           href="https://www.op.gg/summoners/na/THE%20TOASTER%20GUY-NA1" target="_blank">here.</a></p>
     </section>
@@ -73,10 +74,8 @@
       <h1>Highlights</h1>
       <p>Have a look at some of my best moments.</p>
       <div class="video">
-        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/dfku4ndsrFI?si=aIZ1KUKVWXWXsLzp"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe src="https://www.youtube-nocookie.com/embed/dfku4ndsrFI?vq=hd1080&modestbranding=1&rel=0" width="560"
+          height="315" title="My Average Play" frameborder="0" allowfullscreen></iframe>
       </div>
     </section>
 
@@ -113,7 +112,7 @@
 
         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-        <input type="hidden" name="redirect" value="https://nate-league.pages.dev/thanks.html">
+        <input type="hidden" name="redirect" value="https://toaster-league.pages.dev/thanks.html">
 
         <input type="submit" value="Submit">
       </form>
@@ -125,9 +124,15 @@
         CSS Reset</a>.</p>
   </footer>
 
-  <script>
+  <script type="module">
+    import ColorThief from './js/color-thief.mjs';
+
+    const colorThief = new ColorThief();
+
     const loadingScreenElement = document.getElementById('loading-screen');
     const workEthicElement = document.getElementById('work-ethic');
+    const colorThiefPic = document.getElementById('color-thief-pic');
+    const workEthicShadow = '0px 0px 40px 20px ';
 
     document.addEventListener('DOMContentLoaded', async () => {
       try {
@@ -135,31 +140,49 @@
         const data = await response.json();
 
         const newString = data.currentString;
+        colorThiefPic.src = `assets/img/champs/${data.currentString}.jpg`;
 
-        workEthicElement.style.backgroundImage = "url('img/champs/" + data.currentString.replace("'", "\\'") + ".jpg')";
+        workEthicElement.style.backgroundImage = `url('assets/img/champs/${data.currentString.replace("'", "\\'")}.jpg')`;
 
         const nameElements = document.querySelectorAll('.champName');
 
         nameElements.forEach(element => {
           element.innerHTML = newString;
         });
+
+        let imgColor;
+
+        if (colorThiefPic.complete) {
+          imgColor = colorThief.getColor(colorThiefPic);
+          processColor(imgColor);
+        } else {
+          colorThiefPic.addEventListener('load', function () {
+            imgColor = colorThief.getColor(colorThiefPic);
+            processColor(imgColor);
+          });
+        }
+
+        function processColor(imgColor) {
+          const imgColorCondensed = `rgb(${imgColor[0]}, ${imgColor[1]}, ${imgColor[2]})`;
+          workEthicElement.style.boxShadow = workEthicShadow + imgColorCondensed;
+
+          loadingScreenElement.classList.add('hidden');
+        }
       }
       catch (error) {
         console.error('Error fetching data:', error);
 
-        workEthicElement.style.backgroundImage = "url('img/champs/Ryze.jpg')";
+        workEthicElement.style.backgroundImage = "url('assets/img/champs/Ryze.jpg')";
 
         const nameElements = document.querySelectorAll('.champName');
 
         nameElements.forEach(element => {
           element.innerHTML = 'Ryze';
         });
+
+        workEthicElement.style.boxShadow = workEthicShadow + '#10122d';
       }
     });
-
-    window.onload = async () => {
-      loadingScreenElement.classList.add('hidden');
-    };
 
     loadingScreenElement.addEventListener('transitionend', () => {
       loadingScreenElement.remove();

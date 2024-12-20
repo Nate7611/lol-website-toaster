@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'BeaufortforLOL Bold';
-    src: url(fonts/BeaufortforLOL-Bold.ttf);
+    src: url(/assets/fonts/BeaufortforLOL-Bold.ttf);
 }
 
 @font-face {
     font-family: 'Spiegel Regular';
-    src: url(fonts/Spiegel-Regular.ttf);
+    src: url(/assets/fonts/Spiegel-Regular.ttf);
 }
 
 body {
@@ -55,7 +55,7 @@ hr {
 
 header {
     padding-block: 50px;
-    background-image: url(img/top-lane.jpg);
+    background-image: url(/assets/img/top-lane.jpg);
     background-color: #010A13;
     background-position: center;
     background-repeat: no-repeat;
@@ -91,7 +91,6 @@ header {
 
 .intro h1 {
     font-size: 7rem;
-    padding-block: 20px;
     max-width: 90vw;
     width: fit-content;
     margin: 0 auto;
@@ -136,7 +135,7 @@ header {
     width: fit-content;
     margin: 0 auto;
     padding-inline: 10px;
-    background-color: #000810a1;
+    background-color: #000810b8;
     border-radius: 10px;
 }
 
@@ -150,7 +149,7 @@ header {
 }
 
 .ethic-container h2 {
-    background-color: #000810a1;
+    background-color: #000810b8;
     width: fit-content;
     margin: 4px auto;
     padding-inline: 15px;
@@ -159,7 +158,7 @@ header {
 
 .ethic-container p {
     margin-block-start: 10px;
-    background-color: #000810a1;
+    background-color: #000810b8;
     padding: 20px;
     border-radius: 25px;
 }
@@ -184,7 +183,7 @@ header {
     margin: 60px auto;
     padding-block: 50px;
     text-align: center;
-    background-image: url(img/bot-lane.jpg);
+    background-image: url(/assets/img/bot-lane.jpg);
     background-color: #010A13;
     background-position: center;
     background-repeat: no-repeat;

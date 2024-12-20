@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'BeaufortforLOL Bold';
-    src: url(fonts/BeaufortforLOL-Bold.ttf);
+    src: url(/assets/fonts/BeaufortforLOL-Bold.ttf);
 }
 
 @font-face {
     font-family: 'Spiegel Regular';
-    src: url(fonts/Spiegel-Regular.ttf);
+    src: url(/assets/fonts/Spiegel-Regular.ttf);
 }
 
 body {
