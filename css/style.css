@@ -122,6 +122,8 @@ header {
 }
 
 #work-ethic {
+    max-width: 90vw;
+    border-radius: 20px;
     padding-block: 90px;
     margin: 60px auto;
     text-align: center;
@@ -154,6 +156,7 @@ header {
     margin: 4px auto;
     padding-inline: 15px;
     border-radius: 10px;
+    white-space: nowrap;
 }
 
 .ethic-container p {
@@ -283,7 +286,6 @@ footer a {
 @media only screen and (min-width: 2000px) {
     #work-ethic {
         max-width: 80vw;
-        border-radius: 20px;
     }
 }
 
