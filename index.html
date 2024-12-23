@@ -13,6 +13,9 @@
 </head>
 
 <body>
+  <!-- Fix flash of content on FF -->
+  <script></script>
+
   <div id="loading-screen">
     <h1>Loading...</h1>
   </div>
@@ -71,12 +74,12 @@
     </section>
 
     <section class="clip">
-      <h1>Highlights</h1>
-      <p>Have a look at some of my best moments.</p>
-      <div class="video">
-        <iframe src="https://www.youtube-nocookie.com/embed/dfku4ndsrFI?vq=hd1080&modestbranding=1&rel=0" width="560"
-          height="315" title="My Average Play" frameborder="0" allowfullscreen></iframe>
-      </div>
+      <h1>Highlight</h1>
+      <p>Please have a look at one of my best plays.</p>
+      <video width="640" height="360" controls>
+        <source src="assets/kench-clip.mp4" type="video/mp4">
+        Your browser does not support this video.
+      </video>
     </section>
 
     <section class="feedback">
@@ -181,7 +184,7 @@
         });
 
         workEthicElement.style.boxShadow = workEthicShadow + '#10122d';
-        
+
         loadingScreenElement.classList.add('hidden');
       }
     });
